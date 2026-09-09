@@ -14,9 +14,8 @@ from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-import sys
-sys.path.append(str(Path(__file__).parent.parent / "shared"))
-from models import (
+# Import shared models (copied to /app/shared in Docker)
+from shared.models import (
     FileInfo, FileStatus, SyncManifest, UploadRequest, UploadResponse,
     DownloadRequest, DownloadResponse, RepoInfo, ServerStats
 )

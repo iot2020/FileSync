@@ -1,10 +1,8 @@
-version: '3.8'
-
 services:
   filesync-server:
     build:
-      context: ./server
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: server/Dockerfile
     ports:
       - "8000:8000"
     volumes:
