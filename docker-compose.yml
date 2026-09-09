@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  filesync-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - filesync_data:/data
+    environment:
+      - FILESYNC_DATA_DIR=/data
+      - PORT=8000
+      - HOST=0.0.0.0
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  filesync_data:
